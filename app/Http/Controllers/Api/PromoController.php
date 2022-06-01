@@ -111,7 +111,7 @@ class PromoController extends Controller
         if($validate->fails())
             return response(['message' => $validate->errors()], 400); //return error invalid input
             
-        DetailJadwal::query($id)->where('id_jadwal_pegawai',$id)->update([
+        Promo::query($id)->where('kode_promo',$id)->update([
             'kode_promo' => $request->kode_promo, //edit kode_promo
             'jenis_promo' => $request->jenis_promo, //edit jenis_promo
             'keterangan' => $request->keterangan, //edit keterangan
