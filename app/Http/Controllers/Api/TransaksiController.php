@@ -135,8 +135,6 @@ class TransaksiController extends Controller
         $transaksi->harga_sewa_harian = $updateData['harga_sewa_harian']; //edit harga_sewa_harian
         $transaksi->metode_pembayaran = $updateData['metode_pembayaran']; //edit metode_pembayaran
         $transaksi->ekstensi_peminjaman = $updateData['ekstensi_peminjaman']; //edit ekstensi_peminjaman
-        $transaksi->date = $updateData['date'];
-        $transaksi->time = $updateData['time'];
 
         if($transaksi->save()){
             return response([

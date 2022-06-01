@@ -131,8 +131,6 @@ class DriverController extends Controller
         $driver->no_telp = $updateData['no_telp']; //edit no_telp
         $driver->bahasa = $updateData['bahasa']; //edit bahasa
         $driver->password = $updateData['password']; //edit password
-        $driver->date = $updateData['date'];
-        $driver->time = $updateData['time'];
 
         if($driver->save()){
             return response([

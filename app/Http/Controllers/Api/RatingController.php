@@ -115,8 +115,6 @@ class RatingController extends Controller
         $rating->id_driver = $updateData['id_driver']; //edit id_driver
         $rating->id_customer = $updateData['id_customer']; //edit id_customer
         $rating->rating = $updateData['rating']; //edit rating
-        $rating->date = $updateData['date'];
-        $rating->time = $updateData['time'];
 
         if($rating->save()){
             return response([

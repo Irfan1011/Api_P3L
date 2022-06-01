@@ -114,8 +114,6 @@ class PromoController extends Controller
         $promo->kode_promo = $updateData['kode_promo']; //edit kode_promo
         $promo->jenis_promo = $updateData['jenis_promo']; //edit jenis_promo
         $promo->keterangan = $updateData['keterangan']; //edit keterangan
-        $promo->date = $updateData['date'];
-        $promo->time = $updateData['time'];
 
         if($promo->save()){
             return response([
