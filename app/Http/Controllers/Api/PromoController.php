@@ -29,9 +29,9 @@ class PromoController extends Controller
     }
 
     //Menampilkan satu data promo (search)
-    public function show($id)
+    public function show($kode_promo)
     {
-        $promo = Promo::find($id);
+        $promo = Promo::find($kode_promo);
 
         if(!is_null($promo)){
             return response([
