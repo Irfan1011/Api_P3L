@@ -31,7 +31,7 @@ class PromoController extends Controller
     //Menampilkan satu data promo (search)
     public function show($id)
     {
-        $promo = Promo::query($id)->where('kode_promo',$id)->get();
+        $promo = Promo::find($id);
 
         if(!is_null($promo)){
             return response([
@@ -111,11 +111,9 @@ class PromoController extends Controller
         if($validate->fails())
             return response(['message' => $validate->errors()], 400); //return error invalid input
             
-        Promo::query($id)->where('kode_promo',$id)->update([
-            'kode_promo' => $request->kode_promo, //edit kode_promo
-            'jenis_promo' => $request->jenis_promo, //edit jenis_promo
-            'keterangan' => $request->keterangan, //edit keterangan
-        ]);
+        $promo->kode_promo = $updateData['kode_promo']; //edit kode_promo
+        $promo->jenis_promo = $updateData['jenis_promo']; //edit jenis_promo
+        $promo->keterangan = $updateData['keterangan']; //edit keterangan
 
         if($promo->save()){
             return response([
