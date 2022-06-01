@@ -93,7 +93,7 @@ class PromoController extends Controller
 
     public function update(Request $request, $id)
     {
-        $promo = Promo::query($id)->where('kode_promo',$id)->first();//menbcaru data promo berdasarkan id
+        $promo = Promo::query($id)->where('kode_promo',$id)->get();//menbcaru data promo berdasarkan id
         if(is_null($promo)){
             return response([
                 'message' => 'Promo Not Found',
@@ -111,9 +111,11 @@ class PromoController extends Controller
         if($validate->fails())
             return response(['message' => $validate->errors()], 400); //return error invalid input
             
-        $promo->kode_promo = $updateData['kode_promo']; //edit kode_promo
-        $promo->jenis_promo = $updateData['jenis_promo']; //edit jenis_promo
-        $promo->keterangan = $updateData['keterangan']; //edit keterangan
+        DetailJadwal::query($id)->where('id_jadwal_pegawai',$id)->update([
+            'kode_promo' => $request->kode_promo, //edit kode_promo
+            'jenis_promo' => $request->jenis_promo, //edit jenis_promo
+            'keterangan' => $request->keterangan, //edit keterangan
+        ]);
 
         if($promo->save()){
             return response([
