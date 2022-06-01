@@ -93,7 +93,7 @@ class PromoController extends Controller
 
     public function update(Request $request, $id)
     {
-        $promo = Promo::find($id);//menbcaru data promo berdasarkan id
+        $promo = Promo::query($id)->where('kode_promo',$id)->first();//menbcaru data promo berdasarkan id
         if(is_null($promo)){
             return response([
                 'message' => 'Promo Not Found',
